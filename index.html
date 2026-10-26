@@ -86,7 +86,7 @@ h2.sec i{font-size:10px;letter-spacing:1.5px;opacity:0.5;font-style:normal}
 <script>
 // 1. ?api= se aaye to wahi use karo, nahi to neeche hardcoded use hoga
 const apiFromUrl = new URLSearchParams(window.location.search).get('api');
-const HARDCODED_API = "REPLACE_WITH_API"; // yaha /rolex_api ka Raw API paste karo: https://api.telebotcreator.com/new-webhook?data=...
+const HARDCODED_API = "https://api.telebotcreator.com/new-webhook?data=gAAAAABq35mk-O0cX4Mz9saUM8vS8tohFYaf6AwdHJyIRZtvvHpS3Sda5iEtDMvoPuONKtECvFzJmNTrKNJZIkY1ob69fTK-dUpydrnKo-oeq9uXwYPLVe-WNAjLFzf7_kTG6xdCNdzYxeLUVBMHtj7RVSVb8uJRbkawnCeYMZa1g7eduRCT1Gn2NpcjgLQ7L00YmD17xddO"; // yaha /rolex_api ka Raw API paste karo: https://api.telebotcreator.com/new-webhook?data=...
 const API_URL = apiFromUrl ? decodeURIComponent(apiFromUrl) : HARDCODED_API;
 
 Telegram.WebApp.ready(); Telegram.WebApp.expand();
