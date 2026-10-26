@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Rolex Autopay Maker</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+body{background:#050a1a;color:#fff;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:
+radial-gradient(600px 400px at 20% 10%, rgba(120,80,255,0.18), transparent 60%),
+radial-gradient(500px 500px at 90% 30%, rgba(0,220,255,0.12), transparent 60%),
+linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+background-size:auto,auto,28px 28px,28px 28px;z-index:-1}
+.container{max-width:480px;margin:0 auto;padding:14px 14px 30px}
+.topbar{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(12px);border-radius:20px;padding:10px 12px}
+.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#7b5bff,#00d2ff);display:flex;align-items:center;justify-content:center;font-size:18px}
+.live{margin-left:auto;display:flex;align-items:center;gap:6px;background:rgba(0,255,136,0.12);border:1px solid rgba(0,255,136,0.3);color:#00ff88;padding:6px 12px;border-radius:20px;font-size:11px;letter-spacing:1px;font-weight:700}
+.live i{width:7px;height:7px;background:#00ff88;border-radius:50%;display:inline-block;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:6px 12px;border-radius:20px;font-size:10px;letter-spacing:1.2px;color:#ffd84d}
+.hero{margin-top:18px}
+.hero h1{font-size:36px;line-height:0.95;letter-spacing:-1px}
+.hero h1 span{color:#ffb700}
+.hero p{margin-top:10px;opacity:0.6;font-size:13px;line-height:1.5}
+.btns{display:flex;gap:10px;margin-top:16px}
+.btn-primary{flex:1;background:linear-gradient(135deg,#5b6cff,#00d2ff);border:none;color:#fff;padding:14px;border-radius:16px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
+.btn-sec{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:14px;border-radius:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.stat{background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:14px}
+.stat h2{font-size:28px;letter-spacing:-1px}
+.stat span{font-size:10px;letter-spacing:1px;opacity:0.5}
+.bar{height:4px;background:rgba(255,255,255,0.1);border-radius:10px;margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:10px}
+.fleet{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;margin-top:12px;font-size:11px;letter-spacing:1px}
+h2.sec{font-size:18px;margin:22px 0 10px;display:flex;justify-content:space-between}
+h2.sec i{font-size:10px;letter-spacing:1.5px;opacity:0.5;font-style:normal}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px);border-radius:18px;padding:14px}
+.cta{margin-top:18px;background:radial-gradient(400px 200px at 50% 0%, rgba(123,91,255,0.25), transparent 70%), rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:18px;text-align:center}
+.cta .big{width:100%;background:linear-gradient(135deg,#5b6cff,#00e0ff);border:none;color:#fff;padding:15px;border-radius:16px;font-weight:800;font-size:15px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar"><div class="logo">🤖</div><div><b>Rolex Autopay Maker</b><div style="font-size:11px;opacity:0.5">Telegram Bot Studio</div></div><div class="live"><i></i> LIVE</div></div>
+  <div class="hero">
+    <div class="badge">● TELEGRAM BOT STUDIO 2026</div>
+    <h1>Build a <span>w</span> bot that<br>earns while you sleep.</h1>
+    <p>Production ready payment bots with UPI, wallets and referral engines.</p>
+    <div class="btns">
+      <button class="btn-primary" onclick="goBot()">✈ Start your bot</button>
+      <button class="btn-sec" onclick="goOwner()">🎧 Talk to owner</button>
+    </div>
+  </div>
+  <div class="grid4">
+    <div class="stat"><div style="font-size:16px">👥</div><h2 id="total_users">--</h2><span>TOTAL USERS</span><div class="bar"><i style="width:75%;background:linear-gradient(90deg,#00d2ff,#5b6cff)"></i></div></div>
+    <div class="stat"><div style="font-size:16px">🤖</div><h2 id="total_bots">--</h2><span>TOTAL BOTS</span><div class="bar"><i style="width:85%;background:linear-gradient(90deg,#8a5cff,#ff5ccc)"></i></div></div>
+    <div class="stat"><div style="font-size:16px">⚡</div><h2 id="active_bots">--</h2><span>ACTIVE BOTS</span><div class="bar"><i style="width:65%;background:linear-gradient(90deg,#00e676,#00d2ff)"></i></div></div>
+    <div class="stat"><div style="font-size:16px">👥</div><h2 id="bot_members">--</h2><span>BOT MEMBERS</span><div class="bar"><i style="width:90%;background:linear-gradient(90deg,#ffb700,#ff6a00)"></i></div></div>
+  </div>
+  <div class="fleet"><span>FLEET ONLINE</span><b id="fleet">--</b></div>
+  <div style="font-size:9px;opacity:0.4;margin-top:6px" id="synced">Synced from webhook POST / updated now</div>
+  <h2 class="sec">What we build <i>SERVICES</i></h2>
+  <div class="cards">
+    <div class="card"><h3>💼 Wallet bots</h3><p style="font-size:11px;opacity:0.6">Deposit, withdrawal and balance, all inside Telegram.</p></div>
+    <div class="card"><h3>💳 UPI + Wallet</h3><p style="font-size:11px;opacity:0.6">UPI payments wired straight into the wallet.</p></div>
+  </div>
+  <h2 class="sec">Why AutoPay <i>EDGE</i></h2>
+  <div class="cards">
+    <div class="card"><h3>🛡️ Bank grade security</h3><p style="font-size:11px;opacity:0.6">Encrypted tokens, secure webhooks</p></div>
+    <div class="card"><h3>🎨 Custom design</h3><p style="font-size:11px;opacity:0.6">Your brand, buttons and flow</p></div>
+    <div class="card"><h3>🎧 Lifetime support</h3><p style="font-size:11px;opacity:0.6">Direct owner chat, no queue</p></div>
+    <div class="card"><h3>🏷️ Best price</h3><p style="font-size:11px;opacity:0.6">Cheaper, zero compromise</p></div>
+  </div>
+  <div class="cta">
+    <h2>Your idea is one message<br>away.</h2>
+    <p style="font-size:12px;opacity:0.6;margin:8px 0 14px">Tell us the bot you want. We build, brand and launch it.</p>
+    <button class="big" onclick="goBot()">✈ Start your bot now →</button>
+    <div style="margin-top:10px;background:#0b1220;border:1px solid rgba(255,255,255,0.08);padding:12px;border-radius:14px;font-size:13px">💬 @RolexAutopayMaker_Bot</div>
+  </div>
+</div>
+<script>
+const apiFromUrl = new URLSearchParams(window.location.search).get('api');
+const API_URL = apiFromUrl ? decodeURIComponent(apiFromUrl) : "REPLACE_WITH_YOUR_API_URL";
+Telegram.WebApp.ready(); Telegram.WebApp.expand();
+function goBot(){
+  try{ Telegram.WebApp.sendData(JSON.stringify({action:"start_now"})); }catch(e){
+    Telegram.WebApp.openTelegramLink("https://t.me/RolexAutopayMaker_Bot");
+  }
+}
+function goOwner(){ Telegram.WebApp.openTelegramLink("https://t.me/ALONEXROX"); }
+function animate(id, end){
+  let el=document.getElementById(id), n=0, step=Math.ceil(end/40);
+  let t=setInterval(()=>{ n+=step; if(n>=end){n=end; clearInterval(t);} el.innerText = n>=1000? (n/1000).toFixed(1)+'k' : n; },30);
+}
+async function loadStats(){
+  if(API_URL.includes("REPLACE_WITH")){
+    animate("total_users",3); animate("total_bots",2); animate("active_bots",2); animate("bot_members",114);
+    document.getElementById("fleet").innerText="100%";
+    return;
+  }
+  try{
+    let r=await fetch(API_URL, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({ping:1})});
+    let j=await r.json();
+    let s=j.stats || j;
+    if(s.total_users) animate("total_users", s.total_users);
+    if(s.total_bots) animate("total_bots", s.total_bots);
+    if(s.active_bots) animate("active_bots", s.active_bots);
+    if(s.bot_members) animate("bot_members", s.bot_members);
+    if(s.fleet_online) document.getElementById("fleet").innerText=s.fleet_online+"%";
+    if(s.updated) document.getElementById("synced").innerText="Synced from webhook POST / updated "+s.updated+" IST";
+  }catch(e){}
+}
+loadStats(); setInterval(loadStats, 10000);
+</script>
+</body>
+  </html>
